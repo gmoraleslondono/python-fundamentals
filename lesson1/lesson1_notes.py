@@ -4,62 +4,63 @@
 # print("Hello, World!")
 
 #Operations
-# print(2 + 3)
-# print(2 - 3)
-# print(2 * 3)
-# print(2 / 3)
-# print(2 // 3)
-# print(2 ** 3)
-# print(2 % 3)
+# print(2 + 3) # 5
+# print(2 - 3) # -1
+# print(2 * 3) # 6
+# print(2 / 3) # 0.6666666666666666
+# print(2 // 3) # 0
+# print(2 ** 3) # 8
+# print(2 % 3) # 2
 
 #Converting types
 # x = 1
 # y = 0
-# print(bool(x))
-# print(bool(y))
+# print(bool(x)) # True
+# print(bool(y)) # False
 
 # z = ""
-# print(bool(z))
+# print(bool(z)) # False
 
 
 #string
 # text = "python"
-# print(len(text))
-# print(text[0])
-# print(text[-1])
-# print(text[-2])
+# print(len(text)) # 6
+# print(text[0]) # p
+# print(text[-1]) # n
+# print(text[-2]) # o
 
 
 #slicing
 # text = "python"
-# print(text[0:3])
-# print(text[3:6])
+# print(text[0:3]) # pyt
+# print(text[3:6]) # hon
 
 # text = "abcdefghij"
-# print(text[::2]) # step every other letter
-# print(text[::-1]) # revert the string
+# print(text[::2]) # acegi - step every other letter
+# print(text[::-1]) # jihgfedcba - revert the string
 
 #Immutability
 # word = "python"
 # word[0] = "J" # this will throw an error because strings are immutable
-# print(word)
+# print(word) # python
 
 # word = "python"
 # word = "J" + word[1:]
-# print(word)
+# print(word) # Jython
 
 #Trim
 # message = "   Hello, World!   "
-# print(message.strip()) # removes whitespace from both ends
-# print(message.lstrip()) # removes whitespace from the left end
-# print(message.rstrip()) # removes whitespace from the right end
+# print(message.strip()) # Hello, World! - removes whitespace from both ends
+# print(message.lstrip()) # Hello, World!    - removes whitespace from the left end
+# print(message.rstrip()) #    Hello, World! - removes whitespace from the right end
 
-# print(message.upper()) # converts to uppercase
-# print(message.lower()) # converts to lowercase
+# message = "Hello, World!"
+# print(message.upper()) # HELLO, WORLD! - converts to uppercase
+# print(message.lower()) # hello, world! - converts to lowercase
 
 # message = "Python is fun"
-# print(message.replace("fun", "powerful")) # replaces "fun" with "powerful"
+# print(message.replace("fun", "powerful")) # Python is powerful - replaces "fun" with "powerful"
 
 # data = "apple, banana, orange"
-# print(data.split(", ")) # splits the string into a list based on the delimiter ", "  // ['apple', 'banana', 'orange']
+# print(data.split(", ")) # ['apple', 'banana', 'orange'] - splits the string into a list based on the delimiter ", "
 
