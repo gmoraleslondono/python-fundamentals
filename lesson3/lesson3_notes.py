@@ -1,10 +1,10 @@
 # comparison
-# print(5 > 2)
-# print(5 < 2)
-# print(5 == 2)
-# print(5 != 2)
-# print(5 >= 2)
-# print(5 <= 2)
+# print(5 > 2) # True
+# print(5 < 2) # False
+# print(5 == 2) # False
+# print(5 != 2) # True
+# print(5 >= 2) # True
+# print(5 <= 2) # False
 
 # number = 10 # assigning
 # number == 10 # comparison
@@ -102,14 +102,10 @@
 
 # loops
 # languages = ["Python", "Java", "c#", "Javascript"]
-# print(languages[0])
-# print(languages[1])
-# print(languages[2])
-# print(languages[3])
-# Python
-# Java
-# c#
-# Javascript
+# print(languages[0]) # Python
+# print(languages[1]) # Java
+# print(languages[2]) # c#
+# print(languages[3]) # Javascript
 
 # # for-loop
 # languages = ["Python", "Java", "c#", "Javascript"]
@@ -171,7 +167,7 @@
 # }
 
 # for key in student:
-#     print(student["course"]["course1"]) 
+#     print(student["course"]["course1"])
 
 
 
