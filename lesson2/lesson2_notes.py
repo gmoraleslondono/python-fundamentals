@@ -1,3 +1,4 @@
+# Python fundamentals
 # Class 2 - 09-09-2026
 
 # # List (Mutable)
@@ -15,7 +16,7 @@
 
 # # mixed types list
 # mixed = [10, "python", True, 3.14]
-# print(mixed)
+# print(mixed) # [10, 'python', True, 3.14]
 
 # # list contain other list
 # matrix_like = [
@@ -28,10 +29,10 @@
 
 
 # # mutability
-# names = ["Aladin", "Grace", "Alan"]
-# print(names)
+# names = ["Aladdin", "Grace", "Alan"]
+# print(names) # ['Aladdin', 'Grace', 'Alan']
 # names[1] = "Guido"
-# print(names)
+# print(names) # ['Aladdin', 'Guido', 'Alan']
 
 # # List methods
 # languages = ["Python", "Java", "c#"]
@@ -53,9 +54,10 @@
 # languages = ["Python", "Java", "c#"]
 
 # removed_languages = languages.pop() # c#
-# removed_languages = languages.pop(1) # Java
-# print(languages)
-# print(removed_languages)
+# removed_languages_pop = languages.pop(1) # Java
+# print(languages) # ['Python']
+# print(removed_languages) # c#
+# print(removed_languages_pop) # Java
 
 
 # languages = ["Python", "Java", "c#", "Javascript"]
@@ -63,19 +65,21 @@
 # print("Python" in languages) # True check if the list contains something specific
 # print("Rust" in languages) # False
 
+### sorted vs sort
+
 # # sort
 # numbers = [5, 2, 9, 1, 7]
 # numbers.sort() # change the original list
-# print(numbers)
+# print(numbers)  # [1, 2, 5, 7, 9]
 
 # numbers.reverse() # reverse the order of the list
-# print(numbers)
+# print(numbers) # [9, 7, 5, 2, 1]
 
-# # sorted vs sort
+# # sorted
 # numbers = [5, 2, 9, 1, 7]
 # new_numbers = sorted(numbers) # never change the original list source
-# print(new_numbers)
-# print(numbers)
+# print(new_numbers) # [1, 2, 5, 7, 9]
+# print(numbers) # [5, 2, 9, 1, 7]
 
 # # copy
 # list_a = [1, 2, 3]
@@ -135,7 +139,7 @@
 # languages.remove("Java")
 # print(languages) #languages = {'Python', 'c#', 'Go'}
 
-# print(languages[0]) # Throw error set doesnt have index assigned
+# print(languages[0]) # Throw error because set doesn't have index assigned
 
 
 
@@ -146,6 +150,8 @@
 # print(backend_languages & data_languages) # intersection {'Python'} find the duplicated
 # print(backend_languages | data_languages) # union {'Julia', 'Python', 'C#', 'Java', 'R'} combine all, taking unique values
 # print(backend_languages - data_languages) # difference {'C#', 'Java'} Find the ones that doesn't exist in the second set
+
+# Empty collection vs Empty set
 
 # empty_collection = {}
 # print(type(empty_collection)) # <class 'dict'>
@@ -165,9 +171,9 @@
 #     "city": "New York"
 # }
 
-# print(person)
-# print(person["name"])  # Accessing value by key
-# print(person["age"])   # Accessing value by key
+# print(person) # {'name': 'John', 'age': 30, 'city': 'New York'}
+# print(person["name"]) # John - Accessing value by key
+# print(person["age"]) # 30 - Accessing value by key
 
 #(change values)
 # person = {
@@ -180,24 +186,24 @@
 # print(person) # person = {'name': 'John', 'age': 31, 'city': 'New York'}
 
 # person["language"] = "Python"  # Adding a new key-value pair
-# print(person)
+# print(person) # {'name': 'John', 'age': 31, 'city': 'New York', 'language': 'Python'}
 
-# Duplicates
+# Duplicated keys
 # person = {
 #     "name": "John",
 #     "name": "Eva",
 # }
-# print(person)  # Output: {'name': 'Eva'} - The last value for the duplicate key is retained
+# print(person)  # {'name': 'Eva'} - The last value for the duplicate key is retained
 
-#Access keys that doesnt exist
+#Access keys that doesn't exist
 # person = {
 #     "name": "John",
 #     "age": 30,
 # }
 
 # print(person["city"]) ## This will raise a KeyError because "city" does not exist in the dictionary
-# print(person.get("city"))  # Output: None - get() returns the default value if the key doesn't exist
-# print(person.get("city", "unknown"))  # Output: unknown - get() returns the default value if the key doesn't exist
+# print(person.get("city"))  # None - get() returns the default value if the key doesn't exist
+# print(person.get("city", "unknown"))  # unknown - get() returns the default value if the key doesn't exist
 
 
 # person = {
@@ -218,7 +224,7 @@
 #     {"name": "Mike", "age": 35, "city": "Chicago"}
 # ]
 
-# how to get Evas age
+# get Evas age
 # print(students[1]["age"])  # Output: 25 - Accessing the age of the second student (Eva) in the list of dictionaries
 
 # list inside a dictionary
