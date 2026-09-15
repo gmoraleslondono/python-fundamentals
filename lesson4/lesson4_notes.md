@@ -79,6 +79,8 @@ result = calculate_tax(50000, 0.3)
 calculate_tax(result)  # Tax: 15000
 ```
 
+### Return and print (result inside function)
+
 ```python
 def add_with_print(a, b):
     print(a + b)  # 8
