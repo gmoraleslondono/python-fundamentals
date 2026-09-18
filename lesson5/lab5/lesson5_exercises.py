@@ -348,7 +348,7 @@ def count_words(*sections):
         count += len(words)
     return count
 
-print(count_words(*sections)) # 4
+# print(count_words(*sections)) # 4
 
 
 # 6 Use dictionary unpacking to create at least two reports from predefined metadata dictionaries.
@@ -388,9 +388,98 @@ def show_metadata(**kwargs):
 # Author: Gloria Morales
 # Email: Unknown
 
-#TODO
+
 #Part G - Stretch challenges
 # 1 Write merge_settings(defaults, **overrides) returning a new dictionary without modifying defaults.
+def merge_settings(defaults, **overrides):
+    settings = defaults.copy()
+    all_settings = dict(settings, **overrides)
+    return all_settings
+
+defaults = {"a": 1, "b": 2}
+overrides = {"b": 3, "c": 4}
+# print(merge_settings(defaults, **overrides)) # {'a': 1, 'b': 3, 'c': 4}
+# print(defaults) # {'a': 1, 'b': 2}
+# print(overrides) # {'b': 3, 'c': 4}
+
+
 # 2 Write call_summary(function_name, *args, **kwargs) returning a string describing what would be called.
+def call_summary(function_name, *args, **kwargs):
+    return(f"{function_name}, is the function name. {args} positional argument and {kwargs} are the keywords arguments")
+
+# print(call_summary("add", 1, 2, is_number=True))
+# print(call_summary("add", 1, 2, "Gloria is Awesome",  is_number=True))
+# print(call_summary("add", 1, 2, "Gloria is Awesome",  is_number=True, author="Lutita", type="Funny"))
+
+
 # 3 Write a flexible statistics function that returns count, total, average, min and max for *numbers. Implement the calculations manually where reasonable.
+def statistics(*numbers):
+    max_num = None
+    min_num = None
+    count = 0
+    total = 0
+
+    for number in numbers:
+        count += 1
+        total += number
+        if max_num is None or number > max_num:
+            max_num = number
+
+        if min_num is None or number < min_num:
+            min_num = number
+
+        if count == 0:
+            return None
+
+    average = total/count
+
+    return {"max_num" : max_num,
+            "min_num" : min_num,
+            "count" : count,
+            "total" : total,
+            "average" : average}
+
+numbers = [1, 0, 5, -4, 10, 80, 69, -20, 12, -8, 7, 999, 5, -15, 6, 55]
+# print(statistics(*numbers)) # {'max_num': 999, 'min_num': -20, 'count': 16, 'total': 1202, 'average': 75.125}
+# print(statistics(5)) # {'max_num': 5, 'min_num': 5, 'count': 1, 'total': 5, 'average': 5.0}
+# print(statistics(1,2)) # {'max_num': 2, 'min_num': 1, 'count': 2, 'total': 3, 'average': 1.5}
+
+
 # 4 Create five 'predict the output' scope questions and verify your predictions.
+# this function will print the message "Hello", since message is a global variable accessible inside the function
+message = "Hello"
+def greet():
+    print(message)
+# greet()
+
+# this function will show an error, since Python doesn't know what is the variable message is making reference to
+message = "Hello"
+def greet():
+    message = message
+    print(message)
+# greet()
+
+# This function will print Hi
+message = "Hello"
+def greet():
+    message = "Hi"
+    print(message)
+# greet()
+
+# This function will print "Hello, how are you?", since message is a global variable accessible inside the function
+message = "Hello"
+def greet():
+    greeting = f"{message}, how are you?"
+    print(greeting)
+# greet()
+
+# This will show an error since greeting is not accessible outside the function scope
+message = "Hello"
+def greet():
+    greeting = "how are you?"
+    print(greeting)
+
+# the_message = f"{message} {greeting}"
+# print(the_message)
+
+
