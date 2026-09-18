@@ -313,48 +313,104 @@
 # Part F - Applied challenge: Data cleanup
 # 1 Start with a list of at least twelve messy dictionaries representing products: inconsistent name casing/spacing, category, price and stock.
 products = [
-    {"product": " Orange ", "category": "Fruit", "price": 10, "stock": 100},
-    {"product": "APPLE", "category": " fruit ", "price": 20, "stock": 200},
-    {"product": "banana", "category": "FRUIT", "price": 30, "stock": 300},
-    {"product": "  Pear", "category": "Fruit", "price": 40, "stock": 400},
-    {"product": "PINEAPPLE ", "category": " fruit", "price": 50, "stock": 500},
-    {"product": "orange", "category": "FRUIT", "price": 10, "stock": 100},
-    {"product": " Apple ", "category": "Fruit", "price": 20, "stock": 200},
-    {"product": "BANANA", "category": " fruit ", "price": 30, "stock": 300},
-    {"product": " pear ", "category": "FRUIT", "price": 40, "stock": 400},
-    {"product": "PineApple", "category": "Fruit", "price": 50, "stock": 500},
-    {"product": "  ORANGE", "category": " fruit", "price": 10, "stock": 100},
-    {"product": "apple  ", "category": "FRUIT", "price": 20, "stock": 200}
+    {"product": "milk", "category": "dairy", "price": 25, "stock": 100},
+    {"product": "ORANGE", "category": "fruit", "price": 10, "stock": 0},
+    {"product": "BREAD", "category": "bakery", "price": 35, "stock": 80},
+    {"product": "CHICKEN", "category": "meat", "price": 90, "stock": 40},
+    {"product": "APPLE", "category": "fruit", "price": 20, "stock": 200},
+    {"product": "cheese", "category": "dairy", "price": 45, "stock": 0},
+    {"product": "PINEAPPLE", "category": "fruit", "price": 50, "stock": 500},
+    {"product": "BEEF", "category": "meat", "price": 120, "stock": 0},
+    {"product": "croissant", "category": "bakery", "price": 30, "stock": 50},
+    {"product": "banana", "category": "fruit", "price": 30, "stock": 300},
+    {"product": "YOGURT", "category": "dairy", "price": 20, "stock": 150},
+    {"product": "pork", "category": "meat", "price": 100, "stock": 0}
 ]
 
 # 2 Create a cleaned list where names/categories are normalized. Use comprehensions where readable.
-# TODO
-# normalized_products = [
-#     {product["product"].strip().title(),
-#     product["category"].strip().title(),
-#     product["price"],
-#     product["stock"]}
-#     for product in products]
+normalized_products = [
+    {"product" : product["product"].strip().title(),
+    "category" : product["category"],
+    "price" : product["price"],
+    "stock" : product["stock"]}
+    for product in products]
 # print(normalized_products)
-# [{'Orange', 10, 100, 'Fruit'}, {200, 'Apple', 20, 'Fruit'}, {'Fruit', 300, 30, 'Banana'}, {'Fruit', 40, 400, 'Pear'}, {'Fruit', 50, 500, 'Pineapple'}, {'Orange', 10, 100, 'Fruit'}, {200, 'Apple', 20, 'Fruit'}, {'Fruit', 300, 30, 'Banana'}, {'Fruit', 40, 400, 'Pear'}, {'Fruit', 50, 500, 'Pineapple'}, {'Orange', 10, 100, 'Fruit'}, {200, 'Apple', 20, 'Fruit'}]
-
-
-
-
-
-
+# [{'product': 'Milk', 'category': 'dairy', 'price': 25, 'stock': 100}, {'product': 'Orange', 'category': 'fruit', 'price': 10, 'stock': 0}, {'product': 'Bread', 'category': 'bakery', 'price': 35, 'stock': 80}, {'product': 'Chicken', 'category': 'meat', 'price': 90, 'stock': 40}, {'product': 'Apple', 'category': 'fruit', 'price': 20, 'stock': 200}, {'product': 'Cheese', 'category': 'dairy', 'price': 45, 'stock': 0}, {'product': 'Pineapple', 'category': 'fruit', 'price': 50, 'stock': 500}, {'product': 'Beef', 'category': 'meat', 'price': 120, 'stock': 0}, {'product': 'Croissant', 'category': 'bakery', 'price': 30, 'stock': 50}, {'product': 'Banana', 'category': 'fruit', 'price': 30, 'stock': 300}, {'product': 'Yogurt', 'category': 'dairy', 'price': 20, 'stock': 150}, {'product': 'Pork', 'category': 'meat', 'price': 100, 'stock': 0}]
 
 
 # 3 Create a list of in-stock products.
+in_stock_products = [
+    {"product" : product["product"].strip().title(),
+    "category" : product["category"],
+    "price" : product["price"],
+    "stock" : product["stock"]}
+    for product in normalized_products
+    if product["stock"]> 0]
+
+# print(in_stock_products)
+# [{'product': 'Milk', 'category': 'dairy', 'price': 25, 'stock': 100}, {'product': 'Bread', 'category': 'bakery', 'price': 35, 'stock': 80}, {'product': 'Chicken', 'category': 'meat', 'price': 90, 'stock': 40}, {'product': 'Apple', 'category': 'fruit', 'price': 20, 'stock': 200}, {'product': 'Pineapple', 'category': 'fruit', 'price': 50, 'stock': 500}, {'product': 'Croissant', 'category': 'bakery', 'price': 30, 'stock': 50}, {'product': 'Banana', 'category': 'fruit', 'price': 30, 'stock': 300}, {'product': 'Yogurt', 'category': 'dairy', 'price': 20, 'stock': 150}]
+
+
 # 4 Create a set of unique normalized categories.
+unique_categories = set([product["category"] for product in products])
+# print(unique_categories) # {'dairy', 'fruit', 'meat', 'bakery'}
+
+
 # 5 Create a dictionary mapping product name to inventory value (price * stock).
+inventory_value = [{"product": product["product"], "inv_value": product["price"]*product["stock"]} for product in normalized_products]
+# print(inventory_value)
+# [{'product': 'Milk', 'inv_value': 2500}, {'product': 'Orange', 'inv_value': 0}, {'product': 'Bread', 'inv_value': 2800}, {'product': 'Chicken', 'inv_value': 3600}, {'product': 'Apple', 'inv_value': 4000}, {'product': 'Cheese', 'inv_value': 0}, {'product': 'Pineapple', 'inv_value': 25000}, {'product': 'Beef', 'inv_value': 0}, {'product': 'Croissant', 'inv_value': 1500}, {'product': 'Banana', 'inv_value': 9000}, {'product': 'Yogurt', 'inv_value': 3000}, {'product': 'Pork', 'inv_value': 0}]
+
+
 # 6 Sort products by inventory value from highest to lowest.
+sorted_products = sorted(inventory_value, key=lambda product:product['inv_value'], reverse=True)
+# print(sorted_products)
+# [{'product': 'Pineapple', 'inv_value': 25000}, {'product': 'Banana', 'inv_value': 9000}, {'product': 'Apple', 'inv_value': 4000}, {'product': 'Chicken', 'inv_value': 3600}, {'product': 'Yogurt', 'inv_value': 3000}, {'product': 'Bread', 'inv_value': 2800}, {'product': 'Milk', 'inv_value': 2500}, {'product': 'Croissant', 'inv_value': 1500}, {'product': 'Orange', 'inv_value': 0}, {'product': 'Cheese', 'inv_value': 0}, {'product': 'Beef', 'inv_value': 0}, {'product': 'Pork', 'inv_value': 0}]
+
+
 # 7 Use enumerate to print a ranked report.
+# for position, product in enumerate(sorted_products, start=1):
+    # print(f"{position}. {product["product"]}")
+# 1. Pineapple
+# 2. Banana
+# 3. Apple
+# 4. Chicken
+# 5. Yogurt
+# 6. Bread
+# 7. Milk
+# 8. Croissant
+# 9. Orange
+# 10. Cheese
+# 11. Beef
+# 12. Pork
+
+
 # 8 Use zip to combine at least one pair of separate derived lists in a meaningful way.
+names = ["John", "Jane", "Jim", "Diana"]
+ages = [25, 30, 22, 28]
+
+users = dict(zip(names, ages))
+# print(users) # {'John': 25, 'Jane': 30, 'Jim': 22, 'Diana': 28}
+
+
 # 9 Write both a deliberately over-complicated comprehension and a clearer alternative. Explain why the clearer version wins.
+# over-complicated comprehension
+print_products = [product["product"] for product in normalized_products if product["stock"] > 0 and product["price"] > 0]
+# print(print_products)
+# ['Milk', 'Bread', 'Chicken', 'Apple', 'Pineapple', 'Croissant', 'Banana', 'Yogurt']
 
+# clearer alternative print a list with the products
+result = []
+for product in normalized_products:
+    if product["stock"] > 0 and product["price"] > 0:
+        result.append(product["product"])
+print(result)
+# ['Milk', 'Bread', 'Chicken', 'Apple', 'Pineapple', 'Croissant', 'Banana', 'Yogurt']
+
+# the clearer version is easier to read and understand, each line is self-explanatory and the code is more readable.
+
+#TODO
 # Part G - Stretch challenges
-
 # 1 Flatten a simple list of lists using a comprehension.
 # 2 Create a multiplication table structure using a nested comprehension, then decide whether the result is readable enough.
 # 3 Given names and scores, create only passing student dictionaries in one readable comprehension.
