@@ -190,8 +190,8 @@ players = [
 # print(normalized_prayers)
 
 # 2
-# active_payers = [player for player in players if player["score"] >= 80]
-# print(active_payers)
+active_payers = [player for player in players if player["active"] and player["score"] >= 80 ]
+print(active_payers)
 
 # 3
 # sorted_players = sorted(players, key=lambda player:player["score"], reverse=True)
