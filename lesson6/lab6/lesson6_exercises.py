@@ -404,7 +404,7 @@ result = []
 for product in normalized_products:
     if product["stock"] > 0 and product["price"] > 0:
         result.append(product["product"])
-print(result)
+# print(result)
 # ['Milk', 'Bread', 'Chicken', 'Apple', 'Pineapple', 'Croissant', 'Banana', 'Yogurt']
 
 # the clearer version is easier to read and understand, each line is self-explanatory and the code is more readable.
@@ -412,7 +412,49 @@ print(result)
 #TODO
 # Part G - Stretch challenges
 # 1 Flatten a simple list of lists using a comprehension.
+list_of_list = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+flatten_list = [number for list in list_of_list for number in list]
+# print(flatten_list) # [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+
 # 2 Create a multiplication table structure using a nested comprehension, then decide whether the result is readable enough.
+table = [
+    [column * row for column in range(1, 6)]
+    for row in range(1, 6)
+]
+# print(table)
+# [[1, 2, 3, 4, 5],
+# [2, 4, 6, 8, 10],
+# [3, 6, 9, 12, 15],
+# [4, 8, 12, 16, 20],
+# [5, 10, 15, 20, 25]]
+
+
 # 3 Given names and scores, create only passing student dictionaries in one readable comprehension.
+names = ["John", "Jane", "Jim", "Diana"]
+scores = [85, 62, 91, 78]
+passing_students = [{"name":name, "score":score} for name, score in zip(names, scores) if score >= 70]
+# print(passing_students)
+# [{'name': 'John', 'score': 85}, {'name': 'Jim', 'score': 91}, {'name': 'Diana', 'score': 78}]
+
+
 # 4 Use any() and all() to answer useful questions about a score list, after first solving them with loops.
+scores = [85, 62, 91, 78]
+is_positive = any(number > 0 for number in scores)
+# print(is_positive) # True
+
+big_numbers = all(number >= 50 for number in scores)
+# print(big_numbers) # True
+
+
 # 5 Create five examples where Pythonic syntax reduces boilerplate without reducing clarity.
+numbers = [2, 13, 4, 6, 9, 8, 10, 11, 5, 12, 14, 7, 16, 18, 3, 20]
+multiply_numbers = [number*2 for number in numbers]
+
+sorted_numbers = sorted(numbers, key=lambda number:len(str(number)), reverse=True)
+
+big_numbers = [number for number in numbers if number >= 10]
+
+odd_number = any(number % 2 != 0 for number in numbers)
+
+stringify_numbers = [str(number) for number in numbers]
