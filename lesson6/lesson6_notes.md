@@ -317,6 +317,14 @@ print(middle)  # [2, 3, 4]
 print(last)    # 5
 ```
 
+Unpacking a dictionary into variables unpacks the keys:
+
+```python
+person = {"name": "John", "age": 30, "city": "New York"}
+name, age, city = person
+print(name)  # name  (the first key, not "John")
+```
+
 ### Ignore a value
 
 `_` is a convention to use when you are not interested in the value, but there is technically a value there:
@@ -479,4 +487,22 @@ Reduce a list to a single value:
 numbers = [1, 2, 3, 4, 5]  # sum of numbers
 total = reduce(lambda x, y: x + y, numbers)
 print(total)  # 15
+```
+
+## `any()` and `all()`
+
+`any()` returns `True` if at least one item is `True`:
+
+```python
+numbers = [1, 3, 5, 8]
+result = any(number % 2 == 0 for number in numbers)
+print(result)  # True
+```
+
+`all()` returns `True` only if every item is `True`:
+
+```python
+numbers = [2, 4, 6, 8]
+result = all(number % 2 == 0 for number in numbers)
+print(result)  # True
 ```

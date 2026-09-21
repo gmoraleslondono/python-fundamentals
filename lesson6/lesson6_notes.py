@@ -359,4 +359,13 @@
 # total = [number for number in numbers]
 # print(total) # 15
 
+# any() and all()
+# any() returns True if at least one item is True.
+# numbers = [1, 3, 5, 8]
+# result = any(number % 2 == 0 for number in numbers)
+# print(result) # True
 
+# all() returns True only if every item is True.
+# numbers = [2, 4, 6, 8]
+# result = all(number % 2 == 0 for number in numbers)
+# print(result) # True
