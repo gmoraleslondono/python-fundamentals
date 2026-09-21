@@ -28,3 +28,43 @@ normalized_players = [{"name" : player["name"].strip().title(),
                      "wins" : player["wins"],
                       "active" : player["active"]}
                     for player in players]
+
+# Part 3 - Filter the tournament
+
+active_players = [player for player in normalized_players if player["active"]== True]
+
+players_three_wins = [player for player in normalized_players if player["wins"] >= 3]
+
+players_highest_score = [player for player in normalized_players if player["score"] >= 500]
+
+players_from_sweden = [player for player in normalized_players if player["country"] == "Sweden"]
+
+players_active_usa = [player for player in normalized_players if player["active"] == True and player["country"] == "Usa"]
+
+# Part 4 - Tournament statistics
+
+unique_countries = {players["country"] for players in normalized_players}
+
+unique_teams = {player["team"] for player in normalized_players}
+
+player_score = {player["name"]: player["score"] for player in normalized_players}
+
+player_wins = {player["name"] : player["wins"] for player in normalized_players}
+
+awesome_players = [player for player in normalized_players if player["score"] > 700]
+
+
+# Part 5 - Combine tournament data
+
+names = ['Carlos Martin', 'Anna Andersson', 'John Smith', 'Maria Rossi', 'Peter Johnson', 'Sofia Garcia', 'Lars Nilsson', 'Emily Brown', 'David Wilson', 'Laura Martinez', 'Erik Larsson', 'Nina Petrova', 'Tom Wilson', 'Julia Klein', 'Michael Lee']
+
+ages = [30, 25, 26, 43, 22, 60, 45, 31, 25, 30, 23, 36, 48, 19, 55]
+
+tshirt_sizes = ["M", "L", "S", "XL", "M", "L", "S", "M", "XXL", "L", "XL", "S", "M", "XXL", "L"]
+
+players_extra_info = [{"name": name, "age": age, "size": size} for name, age, size in zip(names, ages, tshirt_sizes)]
+
+players_tshirt = dict(zip(names, tshirt_sizes))
+
+players_age = dict(zip(names, ages))
+
