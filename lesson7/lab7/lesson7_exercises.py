@@ -52,3 +52,67 @@ laptop4 = Laptop(
 )
 
 # print(laptop4.brand, laptop4.model, laptop4.price, laptop4.ram_gb) # Mac 2026 1800 128
+
+# Part B - Methods and state
+# 1
+class Book:
+    def __init__(self, title, author, pages):
+        self.title = title
+        self.author = author
+        self.pages = pages
+
+    def is_long(self):
+        if self.pages > 300:
+            return True
+        return False
+
+book1 = Book("Harry Potter and the Philosopher's Stone", "J. K. Rowling", 223)
+# print(book1.is_long()) # False
+
+# 2 and 3
+class BankAccount:
+    def __init__(self, owner, balance = 0):
+        self.owner = owner
+        self.balance = balance
+
+    def deposit(self, amount):
+        self.balance += amount
+
+    def withdraw(self, amount):
+        if amount > self.balance:
+            raise ValueError("No enough fonds")
+        else:
+            self.balance -= amount
+
+# account1 = BankAccount("Anna", 800)
+# print(account1.balance) # 800
+# account1.deposit(100)
+# print(account1.balance) # 900
+
+# account1.withdraw(200)
+# print(account1.balance) # 700
+# account1.withdraw(900)
+# print(account1.balance) # ValueError: No enough fonds
+
+# 4
+class Task:
+    def __init__(self, title, completed=False):
+        self.title = title
+        self.completed = completed
+
+    def complete(self):
+       self.completed = True
+
+    def reopen(self):
+       self.completed = False
+
+# 5
+task1 = Task("Do dishes")
+task2 = Task("Laundry")
+
+# print(task1.completed) # False
+# print(task2.completed) # False
+# task1.completed = True
+# print(task1.completed) # True
+# print(task2.completed) # False
+
