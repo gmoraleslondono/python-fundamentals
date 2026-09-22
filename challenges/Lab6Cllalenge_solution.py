@@ -68,3 +68,25 @@ players_tshirt = dict(zip(names, tshirt_sizes))
 
 players_age = dict(zip(names, ages))
 
+# Part 6 - Ranking system
+
+sorted_highest_score = sorted(players_highest_score, key = lambda player:player["score"], reverse=True)
+
+sorted_most_wins = sorted(normalized_players, key= lambda player:player["wins"])
+
+sorted_most_matches_played = sorted(normalized_players, key= lambda player:player["matches"],reverse=True)
+
+player_name_alphabetically = sorted(names)
+
+
+# Part 7 - Ranked tournament report
+def tournament_report(list):
+    print("------------------------------")
+    print("TOURNAMENT LEADERBOARD")
+    print("------------------------------")
+    for position, player in enumerate(list):
+        print(f"{position}. {player["name"]} - {player["score"]} points")
+
+# tournament_report(player_score)
+
+
