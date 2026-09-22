@@ -47,7 +47,7 @@ unique_countries = {players["country"] for players in normalized_players}
 
 unique_teams = {player["team"] for player in normalized_players}
 
-player_score = {player["name"]: player["score"] for player in normalized_players}
+player_score = [{"name": player["name"],"score": player["score"]} for player in normalized_players]
 
 player_wins = {player["name"] : player["wins"] for player in normalized_players}
 
