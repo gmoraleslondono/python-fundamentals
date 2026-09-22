@@ -116,3 +116,49 @@ task2 = Task("Laundry")
 # print(task1.completed) # True
 # print(task2.completed) # False
 
+# Part C - Instance and class attributes
+# 1, 2, 3
+class Product:
+    tax_rate = 0.25
+
+    def __init__(self, name, price):
+        self.name = name
+        self.price = price
+
+    def price_with_tax(self):
+        return self.price + (self.price * self.tax_rate)
+
+# 4
+product1 = Product(
+    name = "orange",
+    price = 500
+)
+# print(product1.price_with_tax()) # 625
+
+product2 = Product(
+    name = "apple",
+    price = 200
+)
+# print(product2.price_with_tax()) # 250
+
+product3 = Product(
+    name = "kiwi",
+    price = 350
+)
+# print(product3.price_with_tax()) # 437.5
+
+# 5
+Product.tax_rate = 0.88
+# print(product1.price_with_tax()) # 940
+# print(product2.price_with_tax()) # 376
+# print(product3.price_with_tax()) # 658
+
+# 6
+product1.tax_rate = 0.5
+# print(product1.price_with_tax()) # 750
+
+print(product1.tax_rate) # 0.5
+print(product2.tax_rate) # 0.88
+print(Product.tax_rate) # 0.88
+
+
