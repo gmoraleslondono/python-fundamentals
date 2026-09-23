@@ -165,4 +165,80 @@ class SalesReport(Report):
             return f"{base_report} + the sales report."
 
 sales_report1 = SalesReport()
-print(sales_report1.get_summary()) # This is the general report summary + the sales report.
+# print(sales_report1.get_summary()) # This is the general report summary + the sales report.
+
+
+# Part H - Applied challenge: User accounts
+# 1. Build a small user account system using inheritance.
+# 2. Create a base class User with at least username and email.
+# 3. Add a useful method to User that all user types should inherit.
+# 4. Create AdminUser(User) and PremiumUser(User). Give each subclass at least one additional attribute and one subclass-specific method.
+# 5. Use super() in both subclasses instead of duplicating User's initialization.
+# 6. Add one method to User and override it differently in AdminUser and PremiumUser.
+# 7. In one overridden method, use super() to reuse the base implementation and then extend it.
+# 8. Create several objects and demonstrate inherited methods, subclass-specific methods and overridden methods.
+# 9. Add at least one sensible validation using ValueError.
+# 10. In comments, explain why AdminUser and PremiumUser have an "is-a" relationship with User
+
+# Solution
+
+class User:
+    def __init__(self, username, email):
+        self.username = username
+        self.email = email
+
+        if len(username) < 3:
+            raise ValueError("The username should have at least 3 character.")
+
+    def greeting(self):
+        return "Hello!"
+
+    def farewell(self):
+        return "Bye!"
+
+class AdminUser(User):
+    def __init__(self, username, email, active=True):
+        super().__init__(username, email)
+        self.active = active
+
+    def has_access(self):
+        return self.active
+
+    def farewell(self):
+            base = super().farewell()
+            return f"{base} admin user."
+class PremiumUser(User):
+    def __init__(self, username, email, is_premium=True):
+        super().__init__(username, email)
+        self.is_premium = is_premium
+
+    def show_settings(self):
+        return "This are the settings..."
+
+    def farewell(self):
+        base = super().farewell()
+        return f"{base} premium user."
+
+adminUser1 = AdminUser("adminuser1", "adminuser1@email.com")
+adminUser2 = AdminUser("adminuser2", "adminuser2@email.com")
+adminUser3 = AdminUser("adminuser3", "adminuser3@email.com", False)
+# print(adminUser1.has_access()) # True
+# print(adminUser2.username) # adminuser2
+# print(adminUser3.greeting()) # Hello!
+# print(adminUser3.farewell()) # Bye! admin user.
+# print(adminUser3.has_access()) # False
+
+
+premiumUser1 = PremiumUser("premiumuser1", "premiumuser1@email.com")
+premiumUser2 = PremiumUser("premiumuser2", "premiumuser2@email.com")
+premiumUser3 = PremiumUser("ab", "premiumuser3@email.com")
+# print(premiumUser1.show_settings()) # This are the settings...
+# print(premiumUser1.greeting()) # Hello!
+# print(premiumUser2.farewell()) # Bye! premium user.
+# print(premiumUser2.username) # premiumuser2
+# print(premiumUser3.username) # ValueError: The username should have at least 3 character.
+
+
+# AdminUser is a User because AdminUser inherits from User.
+# PremiumUser is a User because PremiumUser inherits from User.
+# Therefore, both classes can inherit User's attributes and methods.
