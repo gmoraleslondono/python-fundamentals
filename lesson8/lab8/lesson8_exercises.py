@@ -146,3 +146,23 @@ new_sms = SMSNotification()
 
 # In this case the new_sms object is using the send() method inside SMSNotification class, because it override the method from the parent class
 # print(new_sms.send()) # SMS sent!
+
+
+# Part G - Override and still use the base method
+# 1. Create a base class Report with a method get_summary() that returns a general report summary.
+# 2. Create SalesReport(Report) and override get_summary().
+# 3. Inside the overridden method, call the base implementation using super() and add SalesReport-specific information.
+# 4. Create a SalesReport object and print the final result.
+
+# Solution:
+class Report:
+    def get_summary(self):
+        return "This is the general report summary"
+
+class SalesReport(Report):
+    def get_summary(self):
+            base_report = super().get_summary()
+            return f"{base_report} + the sales report."
+
+sales_report1 = SalesReport()
+print(sales_report1.get_summary()) # This is the general report summary + the sales report.
