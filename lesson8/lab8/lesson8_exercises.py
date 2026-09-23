@@ -78,3 +78,40 @@ saving1 = SavingsAccount("Peter", 80, 0.25)
 # print(saving1.interest_rate) # 0.25
 
 # SavingsAccount is an Account -> yes. So it makes sense that the child class SavingsAccount inherit from parent class Account
+
+
+# Part E - super() and shared initialization
+# 1. Create a base class Device with brand and year.
+# 2. Add useful shared initialization logic inside Device, for example validation that year cannot be negative and an attribute such as is_active=True.
+# 3. Create Laptop(Device) with one additional attribute such as ram_gb. Use super().
+# 4. Create another Device subclass with its own additional attribute and use super() again.
+# 5. Demonstrate that both subclasses receive the shared initialization logic from Device without duplicating it.
+
+# Solution:
+class Device():
+    is_active = True
+
+    def __init__(self, brand, year):
+        self.brand = brand
+        self.year = year
+
+        if year < 0:
+            raise ValueError("Year can not be negative value")
+
+class Laptop(Device):
+    def __init__(self, brand, year, ram_gb):
+        super().__init__(brand, year)
+        self.ram_gb = ram_gb
+
+class Tv(Device):
+    def __init__(self, brand, year, inches):
+        super().__init__(brand, year)
+        self.inches = inches
+
+laptop1 = Laptop("mac", 2026, 128)
+tv1 = Tv("lg", 2025, 25)
+
+# print(laptop1.brand) # mac
+# print(laptop1.is_active) # True
+# print(tv1.brand) # lg
+# print(tv1.is_active) # True
