@@ -115,3 +115,34 @@ tv1 = Tv("lg", 2025, 25)
 # print(laptop1.is_active) # True
 # print(tv1.brand) # lg
 # print(tv1.is_active) # True
+
+
+# Part F - Method overriding
+# 1. Create a base class Notification with a method send() that returns a general message.
+# 2. Create EmailNotification(Notification) and SMSNotification(Notification).
+# 3. Override send() in both subclasses so each returns a different message.
+# 4. Create one object from each class and call send() on all of them.
+# 5. Explain in a comment which method is used when send() is called on each object.
+
+# Solution:
+
+class Notification:
+    def send(self):
+         return f"Message sent!"
+
+class EmailNotification(Notification):
+    def send(self):
+        return f"Email sent!"
+
+class SMSNotification(Notification):
+    def send(self):
+        return f"SMS sent!"
+
+new_email = EmailNotification()
+new_sms = SMSNotification()
+
+#In this case the new_email is calling the send() method inside the EmailNotification class, because it override the method from the parent class
+# print(new_email.send()) # Email sent!
+
+# In this case the new_sms object is using the send() method inside SMSNotification class, because it override the method from the parent class
+# print(new_sms.send()) # SMS sent!
