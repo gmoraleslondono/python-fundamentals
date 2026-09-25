@@ -99,3 +99,37 @@ product3 = Product("grapes", 400)
 text= str(product2)
 # print(type(text)) # <class 'str'>
 
+
+# Part G - Inheritance or composition?
+# 1. Create CPU with a model attribute.
+# 2. Create Computer with brand and a CPU object. Use composition, not inheritance.
+# 3. Create a CPU object and pass it to a Computer object.
+# 4. Print the computer brand and CPU model through the Computer object.
+# 5. In comments, explain why "Computer HAS-A CPU" makes more sense than "Computer IS-A CPU".
+# 6. For each pair below, write whether you would most likely use inheritance (IS-A) or composition (HAS-A): Car / Engine, Manager / Employee, Course / Teacher, Phone / Device.
+
+# Solution:
+
+class CPU:
+    def __init__(self, model):
+        self.model = model
+
+class Computer:
+    def __init__(self, brand, CPU):
+        self.brand = brand
+        self.CPU = CPU
+
+cpu1 = CPU("intel")
+cpu2 = CPU("AMD")
+
+computer1 = Computer("mac", cpu1 )
+# print(computer1.brand) # mac
+# print(computer1.CPU.model) # intel
+# this is a relationship "Has A" because a computer has a CPU -> composition
+# it is not inheritance because a CPU is not a computer or vice versa.
+
+# Car / Engine -> composition: a Car "HAS A" Engine
+# Manager / Employee -> inheritance: a Manager "IS A" employee
+# Course / Teacher -> composition: a Course "HAS A" Teacher
+# Phone / Device -> inheritance: a Phone "IS A" Device
+
