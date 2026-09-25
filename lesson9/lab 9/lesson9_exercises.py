@@ -70,3 +70,32 @@ appliances = [printer1, screen1, printer2, screen2]
 
 # the list doesn't need to contain elements from the exact same class because Python is flexible and can work with objects of different type
 
+# Part E - __str__
+# 1. Create a Product class with name and price.
+# 2. Create one Product object and print it before defining __str__. Observe the result.
+# 3. Add __str__ so printing the Product gives a useful human-readable description.
+# 4. Create at least three Product objects and print them.
+# 5. Use str() on one Product object, store the result in a variable and print its type.
+
+# Solution:
+class Product:
+    def __init__(self, name, price):
+        self.name = name
+        self.price = price
+
+    def __str__(self):
+        return f"{self.name} - {self.price}"
+
+product1 = Product("orange", 500)
+# print(product1) # <__main__.Product object at 0x101168c20>
+# print(str(product1)) # orange - 500
+
+product2 = Product("apple", 200)
+product3 = Product("grapes", 400)
+
+# print(str(product2)) # apple - 200
+# print(str(product3)) # grapes - 400
+
+text= str(product2)
+# print(type(text)) # <class 'str'>
+
