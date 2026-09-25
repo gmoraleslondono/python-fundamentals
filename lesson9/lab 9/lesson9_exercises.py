@@ -133,3 +133,79 @@ computer1 = Computer("mac", cpu1 )
 # Course / Teacher -> composition: a Course "HAS A" Teacher
 # Phone / Device -> inheritance: a Phone "IS A" Device
 
+
+# Part H - Applied challenge: Export system
+# 1. Build a small export system using the concepts from today's lesson.
+# 2. Create a base class Exporter with a method export(data).
+# 3. Create at least three subclasses, for example ConsoleExporter, TextExporter and SummaryExporter.
+# 4. Override export(data) in every subclass so each handles the same data differently. You do not need to create real files.
+# 5. Add a useful __str__ method to the exporter classes.
+# 6. Create several exporter objects and store them in one list.
+# 7. Loop through the list and call export() on each object to demonstrate polymorphism.
+# 8. Create one additional class that is not part of the Exporter inheritance hierarchy but still provides an export(data) method. Show that it can be used by the same calling code.
+# 9. Use isinstance() at least once to inspect a meaningful type relationship.
+# 10. Add one example of composition to the program and explain the HAS-A relationship in a comment
+
+# Solution:
+
+class Exporter:
+    def export(self, data):
+        return f"Data exported: {data}"
+
+    def __str__(self):
+        return "This is the Exporter function"
+
+class ConsoleExporter(Exporter):
+    def export(self, data):
+        return f"Data from console exported: {data}"
+
+    def __str__(self):
+        return "This is the ConsoleExporter function"
+
+class TextExporter(Exporter):
+    def export(self, data):
+        return f"Text exported: {data}"
+
+    def __str__(self):
+        return "This is the TextExporter function"
+
+class SummaryExporter(Exporter):
+    def export(self, data):
+        return f"Summary exported: {data}"
+
+    def __str__(self):
+            return "This is the SummaryExporter function"
+
+exporter1 = Exporter()
+exporter2 = ConsoleExporter()
+exporter3 = TextExporter()
+exporter4 = SummaryExporter()
+
+exporters = [exporter1, exporter2, exporter3, exporter4]
+
+data = "Sales report"
+
+# for exporter in exporters:
+#     print(exporter.export(data))
+# Data exported: Sales report
+# Data from console exported: Sales report
+# Text exported: Sales report
+# Summary exported: Sales report
+
+class Multinational:
+    def export(self, data):
+        return f"Products exported: {data}"
+
+products = ["product1", "product2"]
+
+company1 = Multinational()
+print(company1.export(products)) # Products exported: ['product1', 'product2']
+print(isinstance(company1, Multinational)) # True
+print(isinstance(exporter1, Multinational)) # False
+
+class Association:
+    def __init__(self, multinationals = None):
+        self.multinationals = multinationals if multinationals is not None else []
+
+association1 = Association([company1])
+# Composition: Association "HAS A" Company
